@@ -7,18 +7,28 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.zip.GZIPOutputStream;
 
+
+/**
+ * utilities to serialize processed data.
+ * 
+ * @author funktapuss
+ *
+ */
 public class Serialize {
 
-	public static void zipAndSerialize(byte[] byteArr) throws IOException {
-
+	/**
+	 * takes a byte array, gzips it, then serializes it with a file name 
+	 * specified by caller. method will automatically append filename extension.
+	 * 
+	 * @param byteArr
+	 * @param outName
+	 * @throws IOException
+	 */
+	public static void zipAndSerialize(byte[] byteArr, String outName) 
+			throws IOException {
 		InputStream inStream = new ByteArrayInputStream(byteArr);
-		//FileInputStream inStream = new FileInputStream("rfs1.pdf");
-		
-		FileOutputStream fileOutStream = new FileOutputStream("testout.gz");
-		GZIPOutputStream gzOutStream = new GZIPOutputStream(fileOutStream);
-		//ZipOutputStream zOutStream = new ZipOutputStream(fileOutStream);
-		//zOutStream.putNextEntry(new ZipEntry("rfs1.pdf"));
-		
+		FileOutputStream fileOutStream = new FileOutputStream(outName + ".gz");
+		GZIPOutputStream gzOutStream = new GZIPOutputStream(fileOutStream);		
 		
 		// buffer
 		byte[] bufferArr = new byte[1024];
@@ -26,22 +36,26 @@ public class Serialize {
 		
 		while ((count = inStream.read(bufferArr)) >= 0) {
 			gzOutStream.write(bufferArr, 0, count);
-			//zOutStream.write(bufferArr, 0, count);
 		}
 		
-		//zOutStream.close();
 		gzOutStream.close();
 		fileOutStream.close();
-		inStream.close();
-		
-				
+		inStream.close();						
 	}
 	
 	
-	
-	public static void serializeByteArr(byte[] byteArr) throws IOException {
+	/**
+	 * takes a byte array and serializes it with file name specified by caller. 
+	 * this method does not append any filename extension. 
+	 * 
+	 * @param byteArr
+	 * @param outName
+	 * @throws IOException
+	 */
+	public static void serializeByteArr(byte[] byteArr, String outName) 
+			throws IOException {
 		InputStream inStream = new ByteArrayInputStream(byteArr);
-		FileOutputStream fileOutStream = new FileOutputStream("test_out_bytes");
+		FileOutputStream fileOutStream = new FileOutputStream(outName);
 		
 		// buffer
 		byte[] bufferArr = new byte[1024];
@@ -49,7 +63,6 @@ public class Serialize {
 		
 		while ((count = inStream.read(bufferArr)) >= 0) {
 			fileOutStream.write(bufferArr, 0, count);
-			//zOutStream.write(bufferArr, 0, count);
 		}
 		
 		fileOutStream.close();
@@ -57,7 +70,17 @@ public class Serialize {
 	}
 	
 	
-	public static void serializeSymbolList(ArrayList<Character> symbolAL) 
+	
+	/**
+	 * takes an ArrayList<Character>, treats each char as a hex nibble, then
+	 * serializes it. This method is aware of the '$' header character.
+	 * 
+	 * @param symbolAL
+	 * @throws IOException
+	 */
+	public static void serializeHexSymbolList(
+			ArrayList<Character> symbolAL, 
+			String outName) 
 			throws IOException {
 
 		byte[] outArr = new byte[symbolAL.size() / 2];
@@ -78,7 +101,7 @@ public class Serialize {
 			outArr[i] = tempB;		
 		}
 
-		FileOutputStream out = new FileOutputStream("testOut");
+		FileOutputStream out = new FileOutputStream(outName);
 		out.write(outArr);
 		out.close();
 		

@@ -1,24 +1,11 @@
 package com.projectvalis.compUtils.util.fileIO;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.projectvalis.compUtils.util.Util;
 
 
 /**
@@ -31,9 +18,10 @@ public class Ingest {
 	static Logger logger = LoggerFactory.getLogger(Ingest.class);
 	
 	
-	
-	/*
-	 * load file as straight byte array
+	/**
+	 * loads a file as a byte array
+	 * @param fName
+	 * @return
 	 */
 	public static byte[] loadFile(String fName) {
 		
@@ -53,20 +41,22 @@ public class Ingest {
 	
 	
 	
-	
+	/**
+	 * loads a file as an ArrayList<Character>, where each char represents 
+	 * a Hex nibble.
+	 * 
+	 * @param fName
+	 * @return
+	 */
 	public static ArrayList<Character> loadFileAsHex(String fName) {
 		// load file
 		byte[] byteArr = loadFile(fName);
 		logger.info("file size is: " + byteArr.length + " bytes");
 		
-		// stage some variables. using stringbuffer to reduce resource 
-		// footprint
+		// stage some variables
 		ArrayList<Character> inHexAL = new ArrayList<Character>();
-		StringBuffer sb1 = new StringBuffer();
-		StringBuffer sb2 = new StringBuffer();
 		
 		// process each byte
-		// ugly ugly ugly -- you know better
 		for (int i = 0; i < byteArr.length; i ++) {	
 			String hexS = Integer.toHexString(byteArr[i] & 0xFF).toUpperCase();
 			if (hexS.length() == 1) hexS = "0" + hexS;
@@ -79,54 +69,13 @@ public class Ingest {
 	}
 	
 	
-	
-	// assumes file is a string representation of hex
-	// assumes file contains only 30/31 (00, 01)
-	public static ArrayList<Character> loadFileAsStringHex(String fName) {
-		// load file
-		byte[] byteArr = loadFile(fName);
-		logger.info("file size is: " + byteArr.length + " bytes");
-		
-		// stage some variables. using stringbuffer to reduce resource 
-		// footprint
-		ArrayList<Character> inHexAL = new ArrayList<Character>();
-
-		
-		// process each byte
-		// ugly ugly ugly -- you know better
-		for (int i = 0; i < byteArr.length; i ++) {	
-			
-			
-			if ((int)byteArr[i] == 48) {
-				inHexAL.add('0');
-				inHexAL.add('0');
-			}
-			else if ((int)byteArr[i] == 49) {
-				inHexAL.add('0');
-				inHexAL.add('1');
-			}
-			else {			
-				//logger.info("found something I can't parse, yo!");
-				//logger.info(byteArr[i] + " " + i);
-				//System.exit(8);
-			}
-			
-
-		}
-		
-		//return to caller
-		return inHexAL;
-	}
-	
-	
-	
-	
-
-	
-	
-	/*
-	 * load file as an array of base8 integers. each digit gets it's own 
-	 * indice, each set of three represents one byte in the file. 
+	/**
+	 * load file as an ArrayList<Character>, where each char represents three 
+	 * bits of data. each digit gets its own indice, each set of three 
+	 * represents one byte in the file.
+	 * 
+	 * @param fName
+	 * @return
 	 */
 	public static ArrayList<Character> loadFileAsOctal(String fName) {
 		// load file
@@ -179,17 +128,48 @@ public class Ingest {
 	}
 	
 	
+	/**
+	 * assumes the file being read is comprised only of ASCII 48/49 ("0", "1").
+	 * reads each as a nibble and returns an ArrayList<Character>, where each
+	 * char represents a nibble of data. 
+	 * 
+	 * @param fName
+	 * @return
+	 */
+	public static ArrayList<Character> loadFileAsStringHex(String fName) {
+		// load file
+		byte[] byteArr = loadFile(fName);
+		logger.info("file size is: " + byteArr.length + " bytes");
+		
+		// stage some variables
+		ArrayList<Character> inHexAL = new ArrayList<Character>();
 
-	
-	
+		
+		// process each byte
+		for (int i = 0; i < byteArr.length; i ++) {	
+			
+			
+			if ((int)byteArr[i] == 48) {
+				inHexAL.add('0');
+				inHexAL.add('0');
+			}
+			else if ((int)byteArr[i] == 49) {
+				inHexAL.add('0');
+				inHexAL.add('1');
+			}
+			else {			
+				logger.info("found something I can't parse, yo!");
+				logger.info(byteArr[i] + " " + i);
+				System.exit(8);
+			}
+			
+
+		}
+		
+		//return to caller
+		return inHexAL;
+	}
 	
 	
 
-	
-	
-	
-	
-	
-	
-	
 }

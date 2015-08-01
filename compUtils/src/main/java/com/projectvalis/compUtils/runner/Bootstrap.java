@@ -29,14 +29,14 @@ public class Bootstrap {
 //    			new ArrayList<Character>(
 //    					asHexAL.subList(0, asHexAL.size() / 2));
 //    	ArrayList<Character> asHexAL = Util.genRnd01(4194304);
-    	ArrayList<Character> asHexAL = Util.loadFileAsHex("a.log");  
-    	ArrayList<Integer>	countAL = Util.countInstances(asHexAL);
-    	Util.report(asHexAL, countAL);
+//    	ArrayList<Character> asHexAL = Util.loadFileAsHex("a.log");  
+//    	ArrayList<Integer>	countAL = Util.countInstances(asHexAL);
+//    	Util.report(asHexAL, countAL);
     	
     	logger.info ("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     	
-    	Util5.countMSCandidates(Ingest.symbolListToByteArr(asHexAL));
-    	Util5.countMSCandidates_m2(asHexAL);
+//    	Util5.countMSCandidates(Ingest.symbolListToByteArr(asHexAL));
+//    	Util5.countMSCandidates_m2(asHexAL);
     	
     	
     	
@@ -167,8 +167,8 @@ public class Bootstrap {
 //asHexAL = processedAL;
     	
     	
-    	Ingest.zipAndSerialize(Ingest.symbolListToByteArr(asHexAL));
-    	Ingest.serializeByteArr(Ingest.symbolListToByteArr(asHexAL)); 
+//    	Ingest.zipAndSerialize(Ingest.symbolListToByteArr(asHexAL));
+//    	Ingest.serializeByteArr(Ingest.symbolListToByteArr(asHexAL)); 
     	
     	
 

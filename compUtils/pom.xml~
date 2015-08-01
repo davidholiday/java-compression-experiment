@@ -40,6 +40,49 @@
   </build>
 
 
+
+<profiles>
+  <profile>
+    <!-- Required for dependencies of JBehave snapshots -->
+    <id>sonatype</id>
+    <activation>
+      <activeByDefault>false</activeByDefault>
+    </activation>
+    <repositories>
+      <repository>
+        <id>sonatype-public-repository-group</id>
+        <name>Sonatype Public Repository Group</name>
+        <url>https://oss.sonatype.org/content/groups/public/</url>
+        <layout>default</layout>
+        <releases>
+          <enabled>true</enabled>
+          <updatePolicy>never</updatePolicy>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+          <updatePolicy>never</updatePolicy>
+        </snapshots>
+      </repository>
+    </repositories>
+    <pluginRepositories>
+      <pluginRepository>
+        <id>sonatype-public-repository-group</id>
+        <name>Sonatype Public Repository Group</name>
+        <url>https://oss.sonatype.org/content/groups/public/</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+      </pluginRepository>
+    </pluginRepositories>
+  </profile>
+</profiles>
+
+
+
+
   <dependencies>
   
     <dependency>
@@ -75,7 +118,7 @@
 
     <dependency>
     	<groupId>org.jbehave</groupId>
-    	<artifactId>jbehave-core</artifactId>
+    	<artifactId>jbehave</artifactId>
     	<version>4.0.2</version>
     </dependency>
 

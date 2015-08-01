@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.projectvalis.compUtils.util.Util;
-import com.projectvalis.compUtils.util.Util3;
 import com.projectvalis.compUtils.util.Util5;
+import com.projectvalis.compUtils.util.fileIO.Ingest;
 
 
 
@@ -35,7 +35,7 @@ public class Bootstrap {
     	
     	logger.info ("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     	
-    	Util5.countMSCandidates(Util3.symbolListToByteArr(asHexAL));
+    	Util5.countMSCandidates(Ingest.symbolListToByteArr(asHexAL));
     	Util5.countMSCandidates_m2(asHexAL);
     	
     	
@@ -167,8 +167,8 @@ public class Bootstrap {
 //asHexAL = processedAL;
     	
     	
-    	Util3.zipAndSerialize(Util3.symbolListToByteArr(asHexAL));
-    	Util3.serializeByteArr(Util3.symbolListToByteArr(asHexAL)); 
+    	Ingest.zipAndSerialize(Ingest.symbolListToByteArr(asHexAL));
+    	Ingest.serializeByteArr(Ingest.symbolListToByteArr(asHexAL)); 
     	
     	
 

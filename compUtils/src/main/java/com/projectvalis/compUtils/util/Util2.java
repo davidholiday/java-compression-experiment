@@ -171,32 +171,7 @@ public class Util2 {
 	
 	
 	
-	public static void serializeSymbolList(ArrayList<Character> symbolAL) 
-			throws IOException {
 
-		byte[] outArr = new byte[symbolAL.size() / 2];
-		
-		for (int i = 0; i < outArr.length; i ++) {
-			String byteS = symbolAL.get(i).toString() + 
-								symbolAL.get(i+1).toString();
-			
-			byte tempB;
-			if (!byteS.contains("$")) {
-				tempB = (byte)Integer.parseInt(byteS, 16);
-			}
-			else {
-				tempB = (byte)(new Character('$').charValue());
-				i++;
-			}
-			
-			outArr[i] = tempB;		
-		}
-
-		FileOutputStream out = new FileOutputStream("testOut");
-		out.write(outArr);
-		out.close();
-		
-	}
 	
 	
 	

@@ -5,6 +5,7 @@ import java.io.File;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.embedder.Embedder;
 
 import com.projectvalis.compUtils.util.fileIO.Ingest;
 
@@ -14,7 +15,7 @@ import com.projectvalis.compUtils.util.fileIO.Ingest;
  * @author funktapuss
  *
  */
-public class LoadByteSteps {
+public class LoadByteSteps extends Embedder {
 
 	private String fNameS;
 	private byte[] byteARR;
@@ -33,7 +34,7 @@ public class LoadByteSteps {
 			+ "correct number of bytes.") 
 	public void checkArrSize() {
 		File file = new File(fNameS);
-		assert (long)byteARR.length == file.length();
+		assert ((long)byteARR.length == file.length());
 	}
 
 	

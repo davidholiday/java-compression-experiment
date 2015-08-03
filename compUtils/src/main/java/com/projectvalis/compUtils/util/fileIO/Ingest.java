@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +20,7 @@ public class Ingest {
 	
 	
 	/**
-	 * loads a file as a byte array
+	 * loads a file as a byte array. requires full pathname of file.
 	 * @param fName
 	 * @return
 	 */

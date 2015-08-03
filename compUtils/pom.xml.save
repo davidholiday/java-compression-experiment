@@ -21,7 +21,6 @@
         <plugin>
 	  <artifactId>maven-compiler-plugin</artifactId>
 	    <version>2.3.2</version>
-	    <configuration>
 	      <source>1.8</source>
 	      <target>1.8</target>
 	    <compilerArgument></compilerArgument>
@@ -59,7 +58,7 @@
              	    <configuration>  
 
                		<includes>  
-                 	    <include>**/*Test.java</include>  
+                 	    <include>**/*.story</include>  
                		</includes>  
                		<ignoreFailureInStories>false</ignoreFailureInStories>  
                		<ignoreFailureInView>false</ignoreFailureInView>  
@@ -90,7 +89,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
     

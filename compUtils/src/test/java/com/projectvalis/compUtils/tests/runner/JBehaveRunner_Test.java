@@ -1,29 +1,33 @@
-package com.projectvalis.compUtils.tests.ingest;
+package com.projectvalis.compUtils.tests.runner;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
-import org.jbehave.core.embedder.StoryControls;
 import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromClasspath;
-import org.jbehave.core.io.UnderscoredCamelCaseResolver;
-import org.jbehave.core.junit.JUnitStory;  
-import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
-import org.jbehave.core.parsers.RegexStoryParser;
+import org.jbehave.core.io.StoryFinder;
+import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.Format;
-import org.jbehave.core.reporters.StoryReporter;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
+import org.jbehave.core.steps.Steps;
+
+import com.projectvalis.compUtils.tests.ingest.LoadByteSteps;
 
 
 
 /**
- * finally got this working and reporting. the docs for this REALLY suck ass. 
+ * generic binder for all JBehave tests. Binds all the story files to the 
+ * step files. works for both Eclipse and Maven command line build.  
  * @author funktapuss
  *
  */
-public class IngestTest extends JUnitStory {
+public class JBehaveRunner_Test extends JUnitStories {
 	
     @Override 
     public Configuration configuration() { 
@@ -40,7 +44,20 @@ public class IngestTest extends JUnitStory {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new LoadByteSteps());       
+    	ArrayList<Steps> stepFileList = new ArrayList<Steps>();
+    	stepFileList.add(new LoadByteSteps());
+    	
+        return new InstanceStepsFactory(configuration(), stepFileList);       
+    }
+    
+    @Override
+    protected List<String> storyPaths() {
+       return new StoryFinder().
+    		   findPaths(CodeLocations.codeLocationFromClass(
+    				   this.getClass()), 
+    				   Arrays.asList("**/*.story"), 
+    				   Arrays.asList(""));
+       
     }
    
 }

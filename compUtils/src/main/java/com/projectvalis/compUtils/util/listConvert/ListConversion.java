@@ -193,31 +193,31 @@ public class ListConversion {
 		
 		
 		
-		public static ArrayList<Character> unInvert(ArrayList<Character> listIn) {
-			
-			int headerDelimeterI = listIn.indexOf('$') + 8;
-			ArrayList<Character> invertFlagAL = 
-					(ArrayList<Character>) listIn.subList(0, headerDelimeterI);
-			
-			ArrayList<Character> symbolAL = 
-					(ArrayList<Character>) 
-						listIn.subList(headerDelimeterI + 1, listIn.size());
-			
-			for (int i = 0; i < invertFlagAL.size(); i ++) {
-				int bandIndexI = i * 8;
-				
-				if (invertFlagAL.get(i).equals('1')) {
-					Util.invertList(
-							(ArrayList<Character>) 
-							symbolAL.subList(bandIndexI, bandIndexI + 8));
-				}
-				
-				
-			}
-			
-			return symbolAL;
-			
-		}
+//		public static ArrayList<Character> unInvert(ArrayList<Character> listIn) {
+//			
+//			int headerDelimeterI = listIn.indexOf('$') + 8;
+//			ArrayList<Character> invertFlagAL = 
+//					(ArrayList<Character>) listIn.subList(0, headerDelimeterI);
+//			
+//			ArrayList<Character> symbolAL = 
+//					(ArrayList<Character>) 
+//						listIn.subList(headerDelimeterI + 1, listIn.size());
+//			
+//			for (int i = 0; i < invertFlagAL.size(); i ++) {
+//				int bandIndexI = i * 8;
+//				
+//				if (invertFlagAL.get(i).equals('1')) {
+//					Util.invertList(
+//							(ArrayList<Character>) 
+//							symbolAL.subList(bandIndexI, bandIndexI + 8));
+//				}
+//				
+//				
+//			}
+//			
+//			return symbolAL;
+//			
+//		}
 		
 	
 	

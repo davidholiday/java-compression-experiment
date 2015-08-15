@@ -95,10 +95,14 @@ public class ReportGenerator {
 	
 	
 	
-	/*
+
+	/**
 	 * counts the number of instances of each hex char in the array. 
 	 * returns array where each indice contains the count of its brethren 
 	 * in the input array. 
+	 * 
+	 * @param symbolAL
+	 * @return
 	 */
 	public static ArrayList<Integer> countInstances (
 			ArrayList<Character> symbolAL) {

@@ -555,67 +555,7 @@ public class Util {
 //	
 //	
 //	
-//	// makes all the symbols (8-15) into (0-7)s and visa versa
-//	public static void /*ArrayList<Character> */
-//		invertList (ArrayList<Character> sublist) {
-////Util2.printList(sublist);
-////System.out.println(" ");
-//
-//		for (int i = 0; i < sublist.size(); i ++) {
-//			int curValI = Integer.parseInt(sublist.get(i).toString(), 16);
-//			int newValI = (curValI > 7) ? (curValI - 8) : (curValI + 8);
-//			sublist.set(i, 
-//					Integer.toHexString(newValI).toUpperCase().charAt(0));
-//		}
-//		
-////Util2.printList(sublist);
-////System.exit(0);
-//		//return sublist;
-//
-//	}
-//	
-//	
-//	
-//	
-//	// makes all the symbols (8-15) into (0-7)s and visa versa
-//	public static void /*ArrayList<Character> */
-//		invertList4 (ArrayList<Character> sublist) {
-////Util2.printList(sublist);
-////System.out.println(" ");
-//
-//		for (int i = 0; i < sublist.size(); i ++) {
-//			int curValI = Integer.parseInt(sublist.get(i).toString(), 16);
-//			int newValI = (curValI > 3) ? (curValI - 4) : (curValI + 4);
-//			sublist.set(i, 
-//					Integer.toHexString(newValI).toUpperCase().charAt(0));
-//		}
-//		
-////Util2.printList(sublist);
-////System.exit(0);
-//		//return sublist;
-//
-//	}
-//	
-//	
-//	
-//	// makes all the symbols (8-15) into (0-7)s and visa versa
-//	public static void /*ArrayList<Character> */
-//		invertList2 (ArrayList<Character> sublist) {
-////Util2.printList(sublist);
-////System.out.println(" ");
-//
-//		for (int i = 0; i < sublist.size(); i ++) {
-//			int curValI = Integer.parseInt(sublist.get(i).toString(), 16);
-//			int newValI = (curValI > 1) ? (curValI - 2) : (curValI + 2);
-//			sublist.set(i, 
-//					Integer.toHexString(newValI).toUpperCase().charAt(0));
-//		}
-//		
-////Util2.printList(sublist);
-////System.exit(0);
-//		//return sublist;
-//
-//	}
+
 //	
 //	
 //	

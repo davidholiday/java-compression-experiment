@@ -21,7 +21,9 @@ public class Serialize {
 	 * specified by caller. method will automatically append filename extension.
 	 * 
 	 * @param byteArr
+	 * 		byte array containing the data you want to zip + serialize.
 	 * @param outName
+	 * 		what you want to call the serialized file. 
 	 * @throws IOException
 	 */
 	public static void zipAndSerialize(byte[] byteArr, String outName) 
@@ -49,7 +51,9 @@ public class Serialize {
 	 * this method does not append any filename extension. 
 	 * 
 	 * @param byteArr
+	 * 		byte array containing the data you want to zip + serialize.
 	 * @param outName
+	 * 		what you want to call the serialized file. 
 	 * @throws IOException
 	 */
 	public static void serializeByteArr(byte[] byteArr, String outName) 
@@ -76,6 +80,9 @@ public class Serialize {
 	 * serializes it. This method is aware of the '$' header character.
 	 * 
 	 * @param symbolAL
+	 * 		hex list representing data to be serialized. 
+	 * @param outName
+	 * 		what you want to call the serialized file. 
 	 * @throws IOException
 	 */
 	public static void serializeHexSymbolList(

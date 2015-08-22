@@ -21,8 +21,11 @@ public class Ingest {
 	
 	/**
 	 * loads a file as a byte array. requires full pathname of file.
+	 * 
 	 * @param fName
+	 * 		the name of the file you want to load. 
 	 * @return
+	 * 		byte array containing loaded file. 
 	 */
 	public static byte[] loadFile(String fName) {
 		
@@ -47,7 +50,10 @@ public class Ingest {
 	 * a Hex nibble.
 	 * 
 	 * @param fName
+	 * 		the name of the file you want to load. 
+	 * 
 	 * @return
+	 * 		list of chars representing ingested file in hex.
 	 */
 	public static ArrayList<Character> loadFileAsHex(String fName) {
 		// load file
@@ -76,7 +82,9 @@ public class Ingest {
 	 * represents one byte in the file.
 	 * 
 	 * @param fName
+	 * 		the name of the file you want to load. 
 	 * @return
+	 * 		list of chars representing ingested file as octal.
 	 */
 	public static ArrayList<Character> loadFileAsOctal(String fName) {
 		// load file
@@ -135,7 +143,9 @@ public class Ingest {
 	 * char represents a nibble of data. 
 	 * 
 	 * @param fName
+	 * 		the name of the file you want to load. 
 	 * @return
+	 * 		list of chars representing ingested file as hex
 	 */
 	public static ArrayList<Character> loadFileAsStringHex(String fName) {
 		// load file

@@ -17,6 +17,23 @@ public class ReportGenerator {
 	static Logger logger = LoggerFactory.getLogger(ReportGenerator.class);
 		
 	
+	// hex weight values
+	public static int weightZeroI = 1;
+	public static int weightOneI = 2;
+	public static int weightTwoI = 3;
+	public static int weightThreeI = 3;
+	public static int weightFourI = 4;
+	public static int weightFiveI = 4;
+	public static int weightSixI = 5;
+	public static int weightSevenI = 5;
+	public static int weightEightI = 6;
+	public static int weightNineI = 6;
+	public static int weightTenI = 7;
+	public static int weightElevenI = 7;
+	public static int weightTwelveI = 8;
+	public static int weightThirteenI = 8;
+	public static int weightFourteenI = 9;
+	public static int weightFifteenI = 9;
 	
 	/**
 	 * reports on the status of the currentlist with respect to proportions of
@@ -67,27 +84,30 @@ public class ReportGenerator {
 	 * number of bits written to disk will be if the stream is huffman encoded. 
 	 * 
 	 * @param countAL
+	 * 		list of hex char counts
 	 * @return
+	 * 		int representing the total number of bits required to serialize 
+	 * a given dataset. 
 	 */
 	public static int getWeight(ArrayList<Integer> countAL) {
 		
     	// get prefix bit count
-    	int totalSizeI = countAL.get(0) + 
-    					 (countAL.get(1) * 2) + 
-    					 (countAL.get(2) * 3) +
-    					 (countAL.get(3) * 3) +
-    					 (countAL.get(4) * 4) + 
-    					 (countAL.get(5) * 4) +
-    					 (countAL.get(6) * 5) +
-    					 (countAL.get(7) * 5) +
-    					 (countAL.get(8) * 6) + 
-    					 (countAL.get(9) * 6) +
-    					 (countAL.get(10) * 7) +
-    					 (countAL.get(11) * 7) + 
-    					 (countAL.get(12) * 8) +
-    					 (countAL.get(13) * 8) +
-    					 (countAL.get(14) * 9) + 
-    					 (countAL.get(15) * 9);
+    	int totalSizeI = (countAL.get(0) * weightZeroI)+ 
+    					 (countAL.get(1) * weightOneI) + 
+    					 (countAL.get(2) * weightTwoI) +
+    					 (countAL.get(3) * weightThreeI) +
+    					 (countAL.get(4) * weightFourI) + 
+    					 (countAL.get(5) * weightFiveI) +
+    					 (countAL.get(6) * weightSixI) +
+    					 (countAL.get(7) * weightSevenI) +
+    					 (countAL.get(8) * weightEightI) + 
+    					 (countAL.get(9) * weightNineI) +
+    					 (countAL.get(10) * weightTenI) +
+    					 (countAL.get(11) * weightElevenI) + 
+    					 (countAL.get(12) * weightTwelveI) +
+    					 (countAL.get(13) * weightThirteenI) +
+    					 (countAL.get(14) * weightFourteenI) + 
+    					 (countAL.get(15) * weightFifteenI);
     	
     	return totalSizeI;
 	}
@@ -102,7 +122,9 @@ public class ReportGenerator {
 	 * in the input array. 
 	 * 
 	 * @param symbolAL
+	 * 		list of chars representing a dataset.
 	 * @return
+	 * 		list containing counts for each char symbol in symbolAL
 	 */
 	public static ArrayList<Integer> countInstances (
 			ArrayList<Character> symbolAL) {

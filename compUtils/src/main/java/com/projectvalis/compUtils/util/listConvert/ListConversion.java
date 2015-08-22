@@ -8,31 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPOutputStream;
 
-import com.projectvalis.compUtils.util.Util;
 
 public class ListConversion {
 
-	public static byte[] symbolListToByteArr(ArrayList<Character> symbolAL) {
-		
+	
+	
+	
+	/**
+	 * 
+	 * @param symbolAL
+	 * @return
+	 */
+	public static byte[] symbolListToByteArr(ArrayList<Character> symbolAL) {		
 		byte[] outArr = new byte[symbolAL.size() / 2];
 		
-		for (int i = 0; i < outArr.length; i ++) {
-			//int outArrIndexI = (i == 0) ? i : i-1;
-			
+		for (int i = 0; i < outArr.length; i ++) {			
 			int symbolIndexI = i * 2;
 			
 			String byteS = symbolAL.get(symbolIndexI).toString() + 
 								symbolAL.get(symbolIndexI+1).toString();
-			
-			//if (byteS.contains("$")) continue;
-			
+						
 			byte tempB = (byte)Integer.parseInt(byteS, 16);
 			outArr[i] = tempB;
-			
 		}
 		
 		return outArr;
-		
 	}
 	
 	
